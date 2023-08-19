@@ -8,21 +8,52 @@ class CustomNoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      decoration:  const BoxDecoration(
+      decoration:  BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
         color:Color(0xffFFCC80)
       ),
-      child: const ListTile(
-        title: Text(
-          "Flutter Tips",
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
-        subtitle: Text(
-          "Build Your Career with Ramy Wael",
-        ),
-        trailing: Icon(
-          FontAwesomeIcons.trash,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 26,left: 16,top: 26),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            ListTile(
+              title:const  Text(
+                "Flutter Tips",
+                style: TextStyle(
+                  fontSize: 26,
+                  color: Colors.black
+                ),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 16,bottom: 16),
+                child: Text(
+                  "Build Your Career with Tharwat Samy",
+                  style: TextStyle(
+                   color: Colors.black.withOpacity(.4),
+                      fontSize: 20,
+                  ),
+                ),
+              ),
+              trailing: IconButton(onPressed: () {
+                
+              },icon: const Icon(
+                FontAwesomeIcons.trash,
+                color: Colors.black,
+                size: 24,
+              ),)
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Text(
+                  "May 20-12-2023",
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(.4),
+                      fontSize: 14,
+                  ),
+                ),
+            ),
+          ],
         ),
       ),
     );

@@ -12,7 +12,7 @@ class NotesApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
      // theme: ThemeData.dark(), ///this is the darktheme in the app
-     theme: ThemeData(brightness:Brightness.dark), // to control the app theme responsively
+     theme: ThemeData(brightness:Brightness.dark,fontFamily: 'Poppins'), // to control the app theme responsively
       home: NotesView(),
     );
   }
