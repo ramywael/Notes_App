@@ -10,9 +10,14 @@ class NotesView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
               context: context,
               builder: (context) {
-                return const AddBottomSheet();
+                return const AddBottomSheet(
+                    //Note when we make a CustomWidget here instead of returning container , it is better because the custom has a build method which it will make the change to ui without hot reload.
+                    );
               },
             );
           },
@@ -20,4 +25,3 @@ class NotesView extends StatelessWidget {
     );
   }
 }
-

@@ -5,6 +5,8 @@ class AddBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container();
+    return  Container(
+      // the container is inside the bottomsheet not the reverse
+    );
   }
 }
