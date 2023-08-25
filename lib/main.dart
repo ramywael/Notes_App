@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/Notes_view.dart';
 import 'package:notes_app/widgets/constants/contant_color.dart';
 import 'package:notes_app/widgets/notes_edit_view_body.dart';
@@ -7,6 +8,7 @@ import 'package:notes_app/widgets/notes_edit_view_body.dart';
 Future<void> main() async {
   await Hive.initFlutter();
   await Hive.openBox(kConstantNoteBox);
+  Hive.registerAdapter(NoteModelAdapter());
   runApp(NotesApp());
 }
 
