@@ -1,79 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/widgets/custom_botton.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
+import '../cubits/addNote/add_note_cubit.dart';
+import 'add_note_form.dart';
 
-class AddBottomSheet extends StatelessWidget {
+class AddBottomSheet extends StatefulWidget {
   const AddBottomSheet({super.key});
 
   @override
+  State<AddBottomSheet> createState() => _AddBottomSheetState();
+}
+
+class _AddBottomSheetState extends State<AddBottomSheet> {
+ bool isAsyncCall = false;
+  @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+    return Padding(
+      padding:  const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
       child: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
-        child: AddNoteFormState(),
+        physics:  const ClampingScrollPhysics(),
+        child: BlocConsumer(
+            builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is AddNoteLoading ? true : false,
+            child : const AddNoteFormState()
+          );
+        },
+        listener: (context, state) {
+              if(state is AddNoteFailure)
+                {
+                  print("Error Message is ${state.message}");
+                }
+              else if(state is AddNoteSuccess)
+                {
+                  Navigator.of(context).pop();
+                }
+        },
       ),
-    );
-  }
-}
-
-class AddNoteFormState extends StatefulWidget {
-  const AddNoteFormState({
-    super.key,
-  });
-
-  @override
-  State<AddNoteFormState> createState() => _AddNoteFormStateState();
-}
-
-class _AddNoteFormStateState extends State<AddNoteFormState> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  String? title, subtitle;
-  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      autovalidateMode: autoValidateMode,
-      key: formKey,
-      child: Column(
-        // the container is inside the bottom-sheet not the reverse
-        children: [
-          CustomTextField(
-            onSaved: (value) {
-              title = value;
-            },
-            hint: "Title",
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          CustomTextField(
-            hint: "Description",
-            maxLines: 5,
-            onSaved: (value) {
-              subtitle = value;
-            },
-          ),
-          const SizedBox(
-            height: 32,
-          ),
-           CustomButton(
-            onTap: () {
-              if (formKey.currentState?.validate() ?? false) {
-                formKey.currentState?.save();
-              //  Navigator.of(context).pop();
-              } else {
-                setState(() {
-                  autoValidateMode = AutovalidateMode.always;
-                });
-              }
-            },
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-        ],
-      ),
+    ),
     );
   }
 }
