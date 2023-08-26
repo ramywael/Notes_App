@@ -6,40 +6,40 @@ import 'package:notes_app/widgets/custom_text_field.dart';
 import '../cubits/addNote/add_note_cubit.dart';
 import 'add_note_form.dart';
 
-class AddBottomSheet extends StatefulWidget {
+class AddBottomSheet extends StatelessWidget {
   const AddBottomSheet({super.key});
 
   @override
-  State<AddBottomSheet> createState() => _AddBottomSheetState();
-}
-
-class _AddBottomSheetState extends State<AddBottomSheet> {
- bool isAsyncCall = false;
-  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:  const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-      child: SingleChildScrollView(
-        physics:  const ClampingScrollPhysics(),
-        child: BlocConsumer(
-            builder: (context, state) {
-          return ModalProgressHUD(
-            inAsyncCall: state is AddNoteLoading ? true : false,
-            child : const AddNoteFormState()
-          );
-        },
+    return BlocProvider(
+      create: (BuildContext context) => AddNoteCubit(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+        child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
-              if(state is AddNoteFailure)
-                {
-                  print("Error Message is ${state.message}");
-                }
-              else if(state is AddNoteSuccess)
-                {
-                  Navigator.of(context).pop();
-                }
+        if (state is AddNoteFailure) {
+        print('failied  ${state.errMessage}');
+        }
+
+        if (state is AddNoteSuccess) {
+        Navigator.pop(context);
+        }
         },
+        builder: (context, state) {
+        return ModalProgressHUD(
+        inAsyncCall: state is AddNoteLoading ? true : false,
+        child: const SingleChildScrollView(
+        child: AddNoteFormState(),
+        ),
+        );
+        },
+
+
+          ),
       ),
-    ),
     );
   }
 }
+
+//Why the state is not updating ?
+//Why the loading is not showing ?

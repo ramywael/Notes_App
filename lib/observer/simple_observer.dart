@@ -7,17 +7,22 @@ class SimpleObserver implements BlocObserver
   @override
   void onChange(BlocBase bloc, Change change) {
     // TODO: implement onChange
-    debugPrint(change.toString());
+    debugPrint("Change $change");
   }
 
   @override
   void onClose(BlocBase bloc) {
     // TODO: implement onClose
+    debugPrint("Close = $bloc");
+    // it is called when the bloc is closed
+
   }
 
   @override
   void onCreate(BlocBase bloc) {
     // TODO: implement onCreate
+    debugPrint("Create = $bloc");
+    // it is called when the bloc is created
   }
 
   @override
