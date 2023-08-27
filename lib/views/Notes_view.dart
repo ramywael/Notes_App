@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/noteView/note_view_cubit.dart';
 import 'package:notes_app/widgets/add_buttom_sheet.dart';
 import 'package:notes_app/widgets/notes_view_body.dart';
 
@@ -8,7 +10,8 @@ class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const NotesViewBody(),
+      body: BlocProvider<NoteViewCubit>(create: (BuildContext context) => NoteViewCubit(),
+      child: const NotesViewBody()),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
