@@ -12,6 +12,8 @@ class NotesView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
+              isScrollControlled: true,
+             // it makes the bottom sheet to be full screen
              showDragHandle: true,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
