@@ -9,10 +9,4 @@ class NoteViewSuccess extends NoteViewState {
 
   NoteViewSuccess(this.notes);
 }
-class NoteViewLoading extends NoteViewState {}
-class NoteViewFailure extends NoteViewState {
-  final String errMessage;
-
-  NoteViewFailure(this.errMessage);
-}
 
