@@ -18,6 +18,8 @@ class _NotesViewBodyState extends State<NotesViewBody> {
   void initState() {
     BlocProvider.of<NoteViewCubit>(context).fetchAllNotes();
     super.initState();
+    //it called when the widget is inserted in the widget tree
+    //it called before the build method
   }
   @override
   Widget build(BuildContext context) {
