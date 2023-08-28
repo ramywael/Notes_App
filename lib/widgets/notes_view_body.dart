@@ -88,15 +88,24 @@ class _NotesViewBodyState extends State<NotesViewBody> {
           );
         } else {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Center(
-                  child: Image.asset(
+           const   SizedBox(
+                height: 6,
+              ),
+            const  SafeArea(
+                child: CustomAppBar(
+                  title: 'Notes',
+                  icon: Icons.search,
+                ),
+              ),
+              const SizedBox(
+                height: 250,
+              ),
+              Image.asset(
                 'lib/assets/images/doings.png',
                 height: 90,
                 width: 90,
                 color: Colors.black.withOpacity(0.6),
-              ),
               ),
               const SizedBox(
                 height: 4,

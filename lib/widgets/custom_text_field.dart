@@ -6,11 +6,13 @@ class CustomTextField extends StatelessWidget {
   final int maxLines;
   final EdgeInsetsGeometry padding;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
   const CustomTextField(
-      {super.key, required this.hint, this.maxLines=1,  this.padding= const EdgeInsets.symmetric(vertical: 20,horizontal: 10), this.onSaved,});
+      {super.key, required this.hint, this.maxLines=1,  this.padding= const EdgeInsets.symmetric(vertical: 20,horizontal: 10), this.onSaved, this.onChanged,});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       onSaved: onSaved,
       validator: (value) {
         if (value?.isEmpty ?? true) {

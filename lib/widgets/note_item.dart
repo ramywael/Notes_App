@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes_app/cubits/noteView/note_view_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/widgets/notes_edit_view_body.dart';
+import '../views/Notrs_edit_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({super.key, required this.note});
@@ -14,7 +14,9 @@ class CustomNoteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, NotesEditViewBody.routeName);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return NotesEditView(note: note,);
+      },),);
       },
       child: Container(
         decoration:  BoxDecoration(
