@@ -15,7 +15,7 @@ class CustomIcon extends StatelessWidget {
         color: Colors.white.withOpacity(.05),
 
       ),
-      child: IconButton(onPressed: onPressed, icon: Icon(icon),),
+      child: IconButton(onPressed: onPressed, icon: Icon(icon,color: Colors.white),),
     );
   }
 }
