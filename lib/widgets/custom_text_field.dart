@@ -41,3 +41,8 @@ class CustomTextField extends StatelessWidget {
 }
 
 //How to make the hint text inside the text-field Widget is centered?
+
+
+
+
+

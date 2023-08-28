@@ -9,18 +9,18 @@ class CustomNotesList extends StatelessWidget {
   const CustomNotesList({super.key});
   @override
   Widget build(BuildContext context) {
-    final List<NoteModel> notes =BlocProvider.of<NoteViewCubit>(context).notes!;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: BlocBuilder<NoteViewCubit,NoteViewState>(
         builder: (BuildContext context, state) {
-        return  ListView.builder(
-            itemCount: notes!.length,
+          List<NoteModel> notes =BlocProvider.of<NoteViewCubit>(context).notes!;
+          return  ListView.builder(
+            itemCount: notes.length,
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) {
               return  Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4),
-                child:  CustomNoteItem(note: BlocProvider.of<NoteViewCubit>(context).notes![index],),
+                child:  CustomNoteItem(note: notes[index],),
               );
             },
           );
@@ -29,3 +29,5 @@ class CustomNotesList extends StatelessWidget {
     );
   }
 }
+
+

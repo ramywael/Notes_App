@@ -5,8 +5,7 @@ abstract class NoteViewState {}
 
 class NoteViewInitial extends NoteViewState {}
 class NoteViewSuccess extends NoteViewState {
-  final List<NoteModel> notes;
-
-  NoteViewSuccess(this.notes);
 }
+
+
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/noteView/note_view_cubit.dart';
 
 import '../cubits/addNote/add_note_cubit.dart';
 import 'add_note_form.dart';
@@ -17,10 +18,10 @@ class AddBottomSheet extends StatelessWidget {
         //But we will use absorber to  prevent the user from entering the same note twice while loading
         listener: (context, state) {
           if (state is AddNoteFailure) {
-            print('failied  ${state.errMessage}');
           }
 
           if (state is AddNoteSuccess) {
+            BlocProvider.of<NoteViewCubit>(context).fetchAllNotes();
             Navigator.pop(context);
           }
         },
@@ -46,3 +47,5 @@ class AddBottomSheet extends StatelessWidget {
     );
   }
 }
+
+

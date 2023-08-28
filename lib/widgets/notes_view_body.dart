@@ -29,8 +29,8 @@ class _NotesViewBodyState extends State<NotesViewBody> {
       ),
       child: Column(
         children: [
-           SizedBox(height: 50,),
-          CustomAppBar(title: 'Notes',icon: Icons.search,),
+          SizedBox(height:20 ,),
+          SafeArea(child: CustomAppBar(title: 'Notes',icon: Icons.search,)),
           Expanded(child: CustomNotesList()),
         ],
       ),

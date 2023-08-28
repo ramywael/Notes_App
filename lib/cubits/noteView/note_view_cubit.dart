@@ -8,10 +8,13 @@ import '../../widgets/constants/contant_color.dart';
 part 'note_view_state.dart';
 
 class NoteViewCubit extends Cubit<NoteViewState> {
-  List<NoteModel>? notes;
   NoteViewCubit() : super(NoteViewInitial());
+  List<NoteModel>? notes;
   fetchAllNotes() {
       var notesBox = Hive.box<NoteModel>(kConstantNoteBox);
        notes = notesBox.values.toList();
+       emit(NoteViewSuccess());
   }
 }
+
+

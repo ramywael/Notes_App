@@ -14,9 +14,9 @@ class NotesEditViewBody extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 50,
+              height: 20,
             ),
-            CustomAppBar(title: 'Edit Note', icon: Icons.check),
+            SafeArea(child: CustomAppBar(title: 'Edit Note', icon: Icons.check)),
             SizedBox(height: 26,),
             CustomTextField(
               hint: "Title",
@@ -32,3 +32,5 @@ class NotesEditViewBody extends StatelessWidget {
     );
   }
 }
+
+
