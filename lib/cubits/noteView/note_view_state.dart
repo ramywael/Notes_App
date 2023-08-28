@@ -4,8 +4,7 @@ part of 'note_view_cubit.dart';
 abstract class NoteViewState {}
 
 class NoteViewInitial extends NoteViewState {}
-class NoteViewSuccess extends NoteViewState {
-}
+class NoteViewSuccess extends NoteViewState {}
 
 
 
