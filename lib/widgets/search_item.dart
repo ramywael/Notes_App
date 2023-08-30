@@ -77,7 +77,11 @@ class SearchData extends SearchDelegate {
     return ListView.builder(
         itemCount: query.isEmpty ? listData.length : filteredData.length,
         itemBuilder: (context, index) {
-          return ListTile(
+          return  ListTile(
+            leading: const Icon(
+              Icons.notes,
+              color: Colors.black,
+            ),
             title: Text(
                 query.isEmpty ? listData[index] : filteredData[index].title),
             onTap: () {
