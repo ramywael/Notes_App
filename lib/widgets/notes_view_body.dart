@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/noteView/note_view_cubit.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/notes_list.dart';
+import 'package:notes_app/widgets/search_item.dart';
 
 class NotesViewBody extends StatefulWidget {
   const NotesViewBody({
@@ -32,18 +33,25 @@ class _NotesViewBodyState extends State<NotesViewBody> {
       child:
           BlocBuilder<NoteViewCubit, NoteViewState>(builder: (context, state) {
         if (state is NoteViewSuccess) {
-          return const Column(
+          return  Column(
             children: [
-              SizedBox(
+           const   SizedBox(
                 height: 20,
               ),
               SafeArea(
                 child: CustomAppBar(
                   title: 'Notes',
                   icon: Icons.search,
+                  onPressed: () {
+                    showSearch(
+                      context: context,
+                      delegate: SearchData(),
+                    );
+
+                  },
                 ),
               ),
-              Expanded(child: CustomNotesList()),
+           const   Expanded(child: CustomNotesList()),
             ],
           );
         } else {
