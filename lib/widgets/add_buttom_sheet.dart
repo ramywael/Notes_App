@@ -17,9 +17,7 @@ class AddBottomSheet extends StatelessWidget {
         //As we rebuild the CustomButton
         //But we will use absorber to  prevent the user from entering the same note twice while loading
         listener: (context, state) {
-          if (state is AddNoteFailure) {
-          }
-
+          if (state is AddNoteFailure) {}
           if (state is AddNoteSuccess) {
             BlocProvider.of<NoteViewCubit>(context).fetchAllNotes();
             Navigator.pop(context);
